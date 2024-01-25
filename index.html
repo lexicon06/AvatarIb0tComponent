@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    .avatar {
+      width: 80px;
+      border-radius: 100vmax;
+      filter: blur(0.4px) contrast(110%) brightness(105%);
+      object-fit: contain;
+      border:solid 3px black;
+      background-color: #fff;
+    }
+
+    body {
+      background-color: #fff;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .user{
+        display: flex;
+        gap:1rem;
+        align-items: center;
+        margin-block: 1rem;
+        position:relative;
+        isolation: isolate;
+        z-index: -50;
+    }
+
+    .user::before{
+        background-color:rgb(84, 217, 98);
+        border:solid 2px rgba(0,0,0,0.7);
+        border-radius: 100vmax;
+        content:"";
+        width:20px;
+        height:20px;
+        position: absolute;
+        z-index: 1;
+        color:white;
+        bottom:0;
+        left:0;
+    }
+
+    .user:hover * {
+        cursor:pointer;
+    }
+
+    .user img:hover{
+        filter:sepia();
+
+    }
+
+    .name{
+        display: flex;
+        gap:5px;
+        font-size:1.2rem;
+    }
+
+    .p_msg::before{
+        content:"- ";
+        color:black;
+    }
+
+    .p_msg{
+        color:gray;
+    }
+  </style>
+  <body>
+    <div class="chat">
+        <div class="user">
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAwADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhPGfivWF8R6hbWuq3sSR3Mi/JcOvRjxwapW9z4tlWORda1Jkf/p6k4/WptY0k3HjK+ZsbZL+bqf8AbNepaVo0UdjEmwZC9qxnNpnRToqS1PIbjXfFWmTfvdU1FgP71y+D+tbun+JtTvLZZV1O954I+0Nwfzre8YaPF9hmLJllUsvHpXnmgs8ThD9x+aunPmJqU+R2Oom1zVx/zFL4f9vD/wCNUp/EOsKRjVr/AP8AAl/8aoapfraRhipYk4UDvWO91eyw+a1rmM/3TziuhTUXcys2egC1XU/GGoWcjsn+lzNleoG9q7awgeC0e1jdgiOsaktz781wNxeCw8ZXl1v2bb6RGPsXI/nXodpPN9mBNqWUtu4PGfXpXBO9z0aKTRzfiPR7ix0u8lubzzVZT5aso3KT/tda8902ON5ooI3x0QuRx9a7Xxzr0cjm0ikDyIRvXGQMg/rx/KsPwxpStaO8yb97EYJpxbSucWOqxpRbXQLfTGupo4rqMEQlvlxwT60+UQ2kMn2gJGq8KAOtW5bqPTLtopZDGkqnYxH3W9M1xOua3Jc77FCWUPy7Dk+30pqLbNaeIhKiprc6TWWjPijUUlH7sXshYjt+8Neg21+WstiuUjCZGe/4VzlhYWuoeJ9cl3b/AC7yWOSPHcuf8K7IWkKQLHGpGMAn0FZ1NZWOijpG55hqmjyS6097OsyQZ5cpjgA5NXtA+3xaOlxGUmt9xwpGGx9fzro/Et3B/wAI7qFtaXaXFwEKCJWyyf3s+gAqTQNN+z+HbO3ON4gV2X6jP9aLtRuZ1cPSrScJK6Oa8R/vtLS/gVm8v5iMc47/AJf0rgNTENzLHNA37xhzgV6qIWRLuLZuSNzxnsRn/GvMbhDYapNbY2QucgN6Z45raMtDy8NhpU5SjJaXsmf/2Q=="
+              class="avatar"
+            />
+            <div class="details">
+                <div class="name">Geeko<div class="p_msg">Playing Counter-Strike</div></div>
+                <div class="asl">30/F/Australia</div>
+            </div>
+          </div>
+    
+          <div class="user">
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAwADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDB8T6pqVnq11HFe3Sr5rYxKwxz9ar6br+pOYYrnULjydh5MhHOOMnr1q/4rtvNv55ApOJWVvpnisi7sJLXR7eZQd0i5/D1ptCudnp8F7rjWoS8uUJRd5WVh/X610V4W05/s/2iUFQANzZzXPfCTUo7h7nTJwPN8vMbluTz0rfl0mBdUklYKJFOGOcAkf1rjxep24RbnH+LdZnt7Voo72ZZiRwkpUgZz2qtr2sz2mhQCK9uFnmVSMStuAxk96y/GN5avdtb2mGlWZnlccjPTGe9c/NJJOweVizYAGewoo0m4xbCtVSlJI9H8X27x3k0ka87zuHqPX61HfWTSeEdOnCbv3OOfQMT+ddR4m077c85hwHBAGe5qS30uaHw3Z2t1akqkO1gRlc556VvKtGykjljSldxZ45FLPp8zXdrM8MsZ6o21ufSuybxxcX+liK7WM3TIAZgdpf3IHerPjrwvaRacmoadEkUaqA6LzvGfvZ+uM1wKyN5S7uo6fSrnFS3FCcou8WNnt8qXXOMnn196Uxb41YrtwBz61Nbv5kUkROSPmA/nU8OyW2U/wAS/KR6VViGz2XUoZUldWRlBbOSK0LvUxp2h2M7bjHkI7K2Co9fetK+kkEzBV3LxwRkGvPfGepRvDPBJqlgiQvtW1WQLJFxyGyc5JP5CsKdJRk3fc3qVG4owJ/El1A99GXSewd28tH789QfSuOvrn7Vdu8cax7zxHGOM+wovtSSeYJHKgUfKPmGK3vC76ZpGryS6hcWkkiJ+6kEqsnPcf8A163lJIxjFjdJ8MzJbyy3JVZZExEoOdvfn+WKx7OQJdvGeC5xz65ruLu+0hmM1tqVrCepAlUr+Wf5VxOmWraprTeWMrvaTIHGM8VjGTi3KT0NJRUkktz/2Q=="
+              class="avatar"
+            />
+            <div class="details">
+                <div class="name">Kanela<div class="p_msg">Listening Spotify</div></div>
+                <div class="asl">30/F/France</div>
+            </div>
+          </div>
+          <div class="user">
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAwADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhPGfivWF8R6hbWuq3sSR3Mi/JcOvRjxwapW9z4tlWORda1Jkf/p6k4/WptY0k3HjK+ZsbZL+bqf8AbNepaVo0UdjEmwZC9qxnNpnRToqS1PIbjXfFWmTfvdU1FgP71y+D+tbun+JtTvLZZV1O954I+0Nwfzre8YaPF9hmLJllUsvHpXnmgs8ThD9x+aunPmJqU+R2Oom1zVx/zFL4f9vD/wCNUp/EOsKRjVr/AP8AAl/8aoapfraRhipYk4UDvWO91eyw+a1rmM/3TziuhTUXcys2egC1XU/GGoWcjsn+lzNleoG9q7awgeC0e1jdgiOsaktz781wNxeCw8ZXl1v2bb6RGPsXI/nXodpPN9mBNqWUtu4PGfXpXBO9z0aKTRzfiPR7ix0u8lubzzVZT5aso3KT/tda8902ON5ooI3x0QuRx9a7Xxzr0cjm0ikDyIRvXGQMg/rx/KsPwxpStaO8yb97EYJpxbSucWOqxpRbXQLfTGupo4rqMEQlvlxwT60+UQ2kMn2gJGq8KAOtW5bqPTLtopZDGkqnYxH3W9M1xOua3Jc77FCWUPy7Dk+30pqLbNaeIhKiprc6TWWjPijUUlH7sXshYjt+8Neg21+WstiuUjCZGe/4VzlhYWuoeJ9cl3b/AC7yWOSPHcuf8K7IWkKQLHGpGMAn0FZ1NZWOijpG55hqmjyS6097OsyQZ5cpjgA5NXtA+3xaOlxGUmt9xwpGGx9fzro/Et3B/wAI7qFtaXaXFwEKCJWyyf3s+gAqTQNN+z+HbO3ON4gV2X6jP9aLtRuZ1cPSrScJK6Oa8R/vtLS/gVm8v5iMc47/AJf0rgNTENzLHNA37xhzgV6qIWRLuLZuSNzxnsRn/GvMbhDYapNbY2QucgN6Z45raMtDy8NhpU5SjJaXsmf/2Q=="
+              class="avatar"
+            />
+            <div class="details">
+                <div class="name">Geeko<div class="p_msg">Playing Counter-Strike</div></div>
+                <div class="asl">30/F/United States</div>
+            </div>
+          </div>
+    
+          <div class="user">
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAwADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDB8T6pqVnq11HFe3Sr5rYxKwxz9ar6br+pOYYrnULjydh5MhHOOMnr1q/4rtvNv55ApOJWVvpnisi7sJLXR7eZQd0i5/D1ptCudnp8F7rjWoS8uUJRd5WVh/X610V4W05/s/2iUFQANzZzXPfCTUo7h7nTJwPN8vMbluTz0rfl0mBdUklYKJFOGOcAkf1rjxep24RbnH+LdZnt7Voo72ZZiRwkpUgZz2qtr2sz2mhQCK9uFnmVSMStuAxk96y/GN5avdtb2mGlWZnlccjPTGe9c/NJJOweVizYAGewoo0m4xbCtVSlJI9H8X27x3k0ka87zuHqPX61HfWTSeEdOnCbv3OOfQMT+ddR4m077c85hwHBAGe5qS30uaHw3Z2t1akqkO1gRlc556VvKtGykjljSldxZ45FLPp8zXdrM8MsZ6o21ufSuybxxcX+liK7WM3TIAZgdpf3IHerPjrwvaRacmoadEkUaqA6LzvGfvZ+uM1wKyN5S7uo6fSrnFS3FCcou8WNnt8qXXOMnn196Uxb41YrtwBz61Nbv5kUkROSPmA/nU8OyW2U/wAS/KR6VViGz2XUoZUldWRlBbOSK0LvUxp2h2M7bjHkI7K2Co9fetK+kkEzBV3LxwRkGvPfGepRvDPBJqlgiQvtW1WQLJFxyGyc5JP5CsKdJRk3fc3qVG4owJ/El1A99GXSewd28tH789QfSuOvrn7Vdu8cax7zxHGOM+wovtSSeYJHKgUfKPmGK3vC76ZpGryS6hcWkkiJ+6kEqsnPcf8A163lJIxjFjdJ8MzJbyy3JVZZExEoOdvfn+WKx7OQJdvGeC5xz65ruLu+0hmM1tqVrCepAlUr+Wf5VxOmWraprTeWMrvaTIHGM8VjGTi3KT0NJRUkktz/2Q=="
+              class="avatar"
+            />
+            <div class="details">
+                <div class="name">Kanela<div class="p_msg">Listening Spotify</div></div>
+                <div class="asl">30/F/Spain</div>
+            </div>
+          </div>
+          
+    </div>
+  </body>
+</html>
